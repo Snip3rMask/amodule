@@ -1,0 +1,27 @@
+{
+    "name": "Anifux Official Repository",
+    "description": "Official Anifux streaming providers",
+    "website": "https://github.com/anifux/plugins",
+    "plugins": [
+        {
+            "name": "Anidb",
+            "version": 1,
+            "language": "en",
+            "mainClass": "com.anifux.provider.anidb.AnidbProvider",
+            "url": "https://github.com/anifux/plugins/releases/download/v1/anidb.msr",
+            "fileHash": "",
+            "icon": "",
+            "description": "Anidb.app streaming provider"
+        },
+        {
+            "name": "Anineko",
+            "version": 1,
+            "language": "en",
+            "mainClass": "com.anifux.provider.anineko.AninekoProvider",
+            "url": "https://github.com/anifux/plugins/releases/download/v1/anineko.msr",
+            "fileHash": "",
+            "icon": "",
+            "description": "Anineko.to streaming provider"
+        }
+    ]
+}

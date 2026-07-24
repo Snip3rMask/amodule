@@ -1,0 +1,8 @@
+{
+    "name": "Anidb",
+    "version": 1,
+    "mainClass": "com.anifux.provider.anidb.AnidbProvider",
+    "language": "en",
+    "description": "Anidb.app streaming provider for Anifux",
+    "icon": ""
+}
