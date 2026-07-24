@@ -1,38 +1,32 @@
-# Anifux Modules — .msr Plugin Providers
+# AStream Modules
 
-This repository contains the official .msr plugin providers for the Anifux app.
+.msr plugin modules for AStream app. Each module is an independent scraping provider packaged as a .msr file.
 
 ## Structure
 
 ```
-anifux-module/
-├── plugin-api/src/        → AnifuxProvider interface + data models
-├── providers/             → Individual providers
-│   ├── anidb/             → Anidb.app provider
-│   ├── anineko/           → Anineko.to provider
-│   └── ...                → More providers
-├── packer/src/            → .msr packaging CLI tool
-└── repo/                  → Repository metadata
-    └── repo.json          → Plugin list for app
+plugin-api/src/       → Provider interface + data models
+provider-{name}/      → Individual provider implementations
+  ├── manifest.json    → Module metadata
+  ├── build.gradle     → Build configuration
+  └── src/             → Provider source code
+packer/src/            → .msr packaging CLI tool
+repo/repo.json         → Module repository manifest
 ```
 
-## Building a Provider
+## Module Format (.msr)
 
-Each provider must:
-1. Implement `com.anifux.plugin.AnifuxProvider`
-2. Include `manifest.json` with metadata
-3. Include `build.gradle.kts` for building
+.msr files are zip archives containing:
+- `manifest.json` — name, version, mainClass
+- `classes.dex` — compiled provider bytecode
 
-## .msr Format
+Loaded at runtime via PathClassLoader.
 
-`.msr` files are zip archives containing:
-- `manifest.json` — Plugin metadata (name, version, mainClass)
-- `classes.dex` — Compiled Dalvik bytecode
+## Building a Module
 
-## Adding a New Provider
+```bash
+cd provider-anidb
+./gradlew buildMsr
+```
 
-1. Create folder under `providers/`
-2. Copy `anidb/` structure as reference
-3. Write your AnifuxProvider implementation
-4. Run the packer to build .msr
-5. Add entry to `repo/repo.json`
+Output: `build/provider-anidb.msr`
