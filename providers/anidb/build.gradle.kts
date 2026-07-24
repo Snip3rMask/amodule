@@ -1,6 +1,5 @@
 plugins {
     java
-    id("com.anifux.msr-plugin") version "1.0" apply false
 }
 
 version = 1
@@ -11,11 +10,11 @@ java {
 }
 
 dependencies {
-    // Plugin API (AnifuxProvider interface and models)
+    // Plugin API stubs (same packages as app — needed for compilation)
     implementation(files("../../plugin-api/src"))
     
-    // Required for HTML scraping
-    implementation("org.jsoup:jsoup:1.17.2")
+    // Jsoup for HTML scraping — NOT packaged in .msr, app provides it
+    compileOnly("org.jsoup:jsoup:1.17.2")
 }
 
 tasks.register<Jar>("buildMsr") {
@@ -24,14 +23,6 @@ tasks.register<Jar>("buildMsr") {
     
     from(sourceSets.main.get().output)
     from("manifest.json")
-    
-    manifest {
-        attributes(
-            "Plugin-Name" to "Anidb",
-            "Plugin-Version" to project.version.toString(),
-            "Plugin-Class" to "com.anifux.provider.anidb.AnidbProvider"
-        )
-    }
     
     doLast {
         println("Created: ${archiveFile.get().asFile.absolutePath}")

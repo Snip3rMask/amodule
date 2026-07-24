@@ -1,6 +1,6 @@
-package com.anifux.plugin;
+package com.anifux.app.model;
 
-/** An episode in a series */
+/** Stub matching app's EpisodeItem — only fields used by modules */
 public class EpisodeItem {
     public String title;
     public String url;
@@ -9,7 +9,6 @@ public class EpisodeItem {
     public String airDate;
 
     public EpisodeItem() {}
-
     public EpisodeItem(String title, String url, String thumbnail, int episodeNumber) {
         this.title = title;
         this.url = url;

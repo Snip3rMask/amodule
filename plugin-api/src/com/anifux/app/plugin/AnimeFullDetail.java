@@ -1,9 +1,10 @@
-package com.anifux.plugin;
+package com.anifux.app.plugin;
 
+import com.anifux.app.model.EpisodeItem;
 import java.util.List;
 
-/** Full anime detail including episode list — returned by loadDetail() */
-public class AnimeDetail {
+/** Full anime detail returned by loadDetail() */
+public class AnimeFullDetail {
     public String title;
     public String url;
     public String thumbnail;
